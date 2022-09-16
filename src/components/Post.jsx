@@ -1,9 +1,8 @@
-import { Link} from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const Post = (props) => {
+const Post = () => {
 
   let { id } = useParams();
   const [postDetails, setPostDetails] = useState();
@@ -12,10 +11,6 @@ const Post = (props) => {
   let obj = {};
 
   useEffect(() => {
-    // axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    //   .then((res) => { const responsePosts = res.data;
-    //   setPostDetails(responsePosts);
-    // });
     axios.all([axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`),
                axios.get(`https://jsonplaceholder.typicode.com/comments/?postId=${id}`)
               ])
